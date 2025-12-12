@@ -1,10 +1,20 @@
-import React from "react";
-import { Routes, Route } from "react-router";
+import React, { useEffect } from "react";
+import { Routes, Route, Navigate } from "react-router";
 import ChatPage from "./pages/ChatPage";
 import LoginPage from "./pages/LoginPage";
 import SignUpPage from "./pages/SignUpPage";
-
+import { useAuthStore } from "./store/useAuthStore";
+import PageLoader from "./components/PageLoader";
+import { Toaster } from "react-hot-toast";
 function App() {
+
+  const { checkAuth, isCheckingAuth, authUser } = useAuthStore();
+
+  useEffect(() => {
+    checkAuth();
+  }, [checkAuth])
+
+  if(isCheckingAuth) return <PageLoader />
 
   return (
     <div className="min-h-screen relative overflow-hidden bg-gradient-to-br from-slate-900 via-blue-900 to-slate-900 flex items-center justify-center p-8">
@@ -17,10 +27,12 @@ function App() {
       {/* Centered Content Container */}
       <div className="relative z-20 text-white">
         <Routes>
-          <Route path="/" element={<ChatPage />} />
-          <Route path="/login" element={<LoginPage />} />
-          <Route path="/signup" element={<SignUpPage />} />
+          <Route path="/" element={authUser ? <ChatPage /> : <Navigate to="/login" />} />
+          <Route path="/login" element={!authUser ? <LoginPage /> : <Navigate to="/" />} />
+          <Route path="/signup" element={!authUser ? <SignUpPage /> : <Navigate to="/" />} />
         </Routes>
+
+        <Toaster />
       </div>
     </div>
   );
