@@ -25,7 +25,7 @@ function App() {
       <div className="absolute inset-0 bg-[radial-gradient(2px_2px_at_20px_30px,rgba(255,255,255,0.3),transparent),radial-gradient(2px_2px_at_40px_70px,rgba(59,130,246,0.4),transparent),radial-gradient(1px_1px_at_90px_40px,rgba(99,102,241,0.5),transparent),radial-gradient(1px_1px_at_130px_80px,rgba(147,51,234,0.3),transparent)] bg-repeat bg-[size:200px_100px] animate-[sparkle_25s_linear_infinite] opacity-15 z-10" />
       
       {/* Centered Content Container */}
-      <div className="relative z-20 text-white">
+      <div className="relative z-20 text-white w-full">
         <Routes>
           <Route path="/" element={authUser ? <ChatPage /> : <Navigate to="/login" />} />
           <Route path="/login" element={!authUser ? <LoginPage /> : <Navigate to="/" />} />
