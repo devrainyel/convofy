@@ -19,7 +19,7 @@ function SignUpPage() {
   };
 
   return (
-    <div className="flex">
+    <div className="flex w-full max-w-6xl mx-auto">
       {/* Brand */}
       <div className="hidden lg:flex lg:w-1/2 bg-gradient-to-br from-blue-600 via-blue-700 to-indigo-800 flex-col items-center justify-center p-12 text-white">
         <div className="max-w-md space-y-8">
