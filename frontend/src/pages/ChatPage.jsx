@@ -14,7 +14,7 @@ function ChatPage() {
   <div className="relative w-full max-w-6xl mx-auto h-[800px] bg-blue-950">
     {/* Left Side */}
     <div className="flex w-full h-full">
-    <div className="w-1/3 bg-slate-500">
+    <div className="w-1/3 bg-slate-500 ">
       <ProfileHeader />
       <ActiveTabSwitch />
 
